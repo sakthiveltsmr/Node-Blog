@@ -2,7 +2,10 @@ const express = require("express");
 const client = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const authRoute = require("./Routes/auth");
 dotenv.config();
+client.use(express.json());
+
 mongoose
   .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -12,9 +15,7 @@ mongoose
   .then(console.log("mongodb connected successfully"))
   .catch((err) => console.log(err));
 
-client.use("/", (req, res) => {
-  console.log("this is main url");
-});
+client.use("/API/auth", authRoute);
 
 client.listen("5000", () => {
   console.log("backend is running");
