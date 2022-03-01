@@ -1,10 +1,10 @@
 const express = require("express");
-const client = express();
+const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./Routes/auth");
 dotenv.config();
-client.use(express.json());
+app.use(express.json());
 
 mongoose
   .connect(process.env.MONGODB_URL, {
@@ -13,10 +13,12 @@ mongoose
     useCreateIndex: true,
   })
   .then(console.log("mongodb connected successfully"))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log("err", err.message));
+app.get("/", (req, res) => {
+  res.status(200).send("server running ");
+});
+app.use("/api/auth", authRoute);
 
-client.use("/API/auth", authRoute);
-
-client.listen("5000", () => {
+app.listen("5000", () => {
   console.log("backend is running");
 });
