@@ -5,7 +5,7 @@ dotenv.config();
 
 const URL =
   "mongodb+srv://sakthi123:sakthi123@cluster0.jvpny.mongodb.net/blog?retryWrites=true&w=majority";
-// const cors = require("cors");
+const cors = require("cors");
 // const multer = require("multer");
 // const path = require("path");
 
@@ -14,7 +14,7 @@ const authRoute = require("./Routes/auth");
 // const userRoute = require("./Routes/Users");
 // const postRoute = require("./Routes/Posts");
 // const categoryRoute = require("./Routes/Categories");
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 // app.use("/images", express.static(path.join(__dirname, "/images")));
 // app.use("/images", express.static(path.join(__dirname, "/images")));
