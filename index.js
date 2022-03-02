@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const URL =
-  "mongodb+srv://sakthi123:sakthi123@cluster0.jvpny.mongodb.net/blog?retryWrites=true&w=majority";
+  "mongodb+srv://sakthi123:sakthi123@cluster0.ydepc.mongodb.net/blog?retryWrites=true&w=majority";
 const cors = require("cors");
 // const multer = require("multer");
 // const path = require("path");
@@ -27,7 +27,7 @@ mongoose
     useFindAndModify: true,
   })
   .then(console.log("connected to mongo db"))
-  .catch((err) => console.log("Error in Db connection", err));
+  .catch((err) => console.log("Error in Db connection", err.message));
 
 //image multer
 //storage file location choosing;
