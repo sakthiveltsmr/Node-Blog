@@ -3,8 +3,8 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
-const URL =
-  "mongodb+srv://sakthi123:sakthi123@cluster0.ydepc.mongodb.net/blog?retryWrites=true&w=majority";
+const URL = process.env.MONGODB_URL;
+// "mongodb+srv://sakthi123:sakthi123@cluster0.ydepc.mongodb.net/blog?retryWrites=true&w=majority";
 const cors = require("cors");
 // const multer = require("multer");
 // const path = require("path");
@@ -13,7 +13,7 @@ const cors = require("cors");
 const authRoute = require("./Routes/auth");
 const userRoute = require("./Routes/Users");
 const postRoute = require("./Routes/Post");
-// const categoryRoute = require("./Routes/Categories");
+const categoryRoute = require("./Routes/category");
 app.use(cors());
 app.use(express.json());
 // app.use("/images", express.static(path.join(__dirname, "/images")));
