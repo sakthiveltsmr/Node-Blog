@@ -11,8 +11,8 @@ const cors = require("cors");
 
 //routes
 const authRoute = require("./Routes/auth");
-// const userRoute = require("./Routes/Users");
-// const postRoute = require("./Routes/Posts");
+const userRoute = require("./Routes/Users");
+const postRoute = require("./Routes/Post");
 // const categoryRoute = require("./Routes/Categories");
 app.use(cors());
 app.use(express.json());
@@ -59,8 +59,8 @@ mongoose
 //middlewares
 
 app.use("/api/auth", authRoute);
-// app.use("/api/users", userRoute);
-// app.use("/api/posts", postRoute);
+app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
 // app.use("/api/categories", categoryRoute);
 
 port = process.env.PORT || 4000;
