@@ -6,8 +6,8 @@ dotenv.config();
 const URL = process.env.MONGODB_URL;
 // "mongodb+srv://sakthi123:sakthi123@cluster0.ydepc.mongodb.net/blog?retryWrites=true&w=majority";
 const cors = require("cors");
-// const multer = require("multer");
-// const path = require("path");
+const multer = require("multer");
+const path = require("path");
 
 //routes
 const authRoute = require("./Routes/auth");
@@ -16,8 +16,8 @@ const postRoute = require("./Routes/Post");
 const categoryRoute = require("./Routes/category");
 app.use(cors());
 app.use(express.json());
-// app.use("/images", express.static(path.join(__dirname, "/images")));
-// app.use("/images", express.static(path.join(__dirname, "/images")));
+app.use("/images", express.static(path.join(__dirname, "/images")));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 const mongoose = require("mongoose");
 mongoose
   .connect(URL, {
@@ -32,29 +32,29 @@ mongoose
 //image multer
 //storage file location choosing;
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "images");
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(req.body);
-//     cb(null, file.originalname);
-//   },
-// });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    console.log(req.body);
+    cb(null, file.originalname);
+  },
+});
 
-// const upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
 // // make public folder:
 
-// app.post("/api/upload", upload.single("file"), (req, res) => {
-//   try {
-//     console.log("in upload", req.file);
-//     console.log("In image upload");
-//     res.status(200).send("file has been uploaded");
-//   } catch (err) {
-//     res.status(500).send("error in uploading");
-//   }
-// });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  try {
+    console.log("in upload", req.file);
+    console.log("In image upload");
+    res.status(200).send("file has been uploaded");
+  } catch (err) {
+    res.status(500).send("error in uploading");
+  }
+});
 
 //middlewares
 
