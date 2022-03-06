@@ -62,6 +62,9 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
+app.use("/", (req, res) => {
+  res.status(200).send("server running successfully");
+});
 
 port = process.env.PORT || 4000;
 app.listen(port, () => {
