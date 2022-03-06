@@ -33,7 +33,7 @@ router.put("/:id", async (req, res) => {
 //delete
 
 router.delete("/:id", async (req, res) => {
-  console.log("delete in process");
+  console.log("delete in processed");
   if (req.body.userId === req.params.id) {
     try {
       const user = await User.findById(req.params.id);
