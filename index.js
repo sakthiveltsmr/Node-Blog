@@ -11,8 +11,8 @@ const path = require("path");
 
 //routes
 const authRoute = require("./Routes/auth");
-const userRoute = require("./Routes/Users");
-const postRoute = require("./Routes/Post");
+const userRoute = require("./Routes/users");
+const postRoute = require("./Routes/post");
 const categoryRoute = require("./Routes/category");
 app.use(cors());
 app.use(express.json());
